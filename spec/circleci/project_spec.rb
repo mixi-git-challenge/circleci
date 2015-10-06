@@ -278,7 +278,7 @@ describe CircleCi::Project do
 
   describe 'set_settings' do
 
-    context 'successfully', vcr: { cassette_name: 'project/settings/success', record: :none } do
+    context 'successfully', vcr: { cassette_name: 'project/put_settings/success', record: :none } do
 
       let(:res) { CircleCi::Project.put_settings 'Shopify', 'google_auth', {} }
 
