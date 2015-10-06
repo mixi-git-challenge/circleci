@@ -44,7 +44,7 @@ module CircleCi
 
     def request(http_verb, path, body = {})
       url  = "#{@config.host}#{path}"
-      args = create_request_args http_verb, url, body
+      args = create_request_args http_verb, url, body.to_json
 
       RestClient.send(*args) do |res, req, raw_res|
         body = res.body.to_s
