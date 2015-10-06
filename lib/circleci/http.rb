@@ -35,7 +35,7 @@ module CircleCi
     end
 
     def create_request_args(http_verb, url, body)
-      if http_verb == "post"
+      if ["post","put"].include? http_verb
         return [http_verb, url, body, headers]
       end
 
@@ -44,7 +44,7 @@ module CircleCi
 
     def request(http_verb, path, body = {})
       url  = "#{@config.host}#{path}"
-      args = create_request_args http_verb, url, body.to_json
+      args = create_request_args http_verb, url, body
 
       RestClient.send(*args) do |res, req, raw_res|
         body = res.body.to_s
