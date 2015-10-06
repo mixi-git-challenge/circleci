@@ -280,7 +280,7 @@ describe CircleCi::Project do
 
     context 'successfully', vcr: { cassette_name: 'project/settings/success', record: :none } do
 
-      let(:res) { CircleCi::Project.set_settings 'Shopify', 'google_auth' }
+      let(:res) { CircleCi::Project.put_settings 'Shopify', 'google_auth', {} }
 
       it 'returns a response object' do
         res.should be_an_instance_of(CircleCi::Response)
