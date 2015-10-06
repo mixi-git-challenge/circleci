@@ -276,7 +276,7 @@ describe CircleCi::Project do
 
   end
 
-  describe 'set_settings' do
+  describe 'put_settings' do
 
     context 'successfully', vcr: { cassette_name: 'project/put_settings/success', record: :none } do
 
