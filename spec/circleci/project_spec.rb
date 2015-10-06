@@ -276,4 +276,28 @@ describe CircleCi::Project do
 
   end
 
+  describe 'set_settings' do
+
+    context 'successfully', vcr: { cassette_name: 'project/settings/success', record: :none } do
+
+      let(:res) { CircleCi::Project.set_settings 'Shopify', 'google_auth' }
+
+      it 'returns a response object' do
+        res.should be_an_instance_of(CircleCi::Response)
+        res.should be_success
+      end
+
+      it 'returns a response hash' do
+        res.body.should be_an_instance_of(Hash)
+        project = res.body
+        project.should have_key 'github_permissions'
+        project.should have_key 'branches'
+        project.should have_key 'default_branch'
+      end
+
+    end
+
+  end
+
+
 end
