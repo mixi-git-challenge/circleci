@@ -18,6 +18,10 @@ module CircleCi
       request 'post', "#{path}?#{RestClient::Payload.generate(build_params(params))}", body
     end
 
+    def put(path, params = {}, body = {})
+      request 'put', "#{path}?#{RestClient::Payload.generate(build_params(params))}", body
+    end
+
     def delete(path, params = {})
       request 'delete', "#{path}?#{RestClient::Payload.generate(build_params(params))}"
     end

@@ -130,6 +130,19 @@ module CircleCi
       CircleCi.http.get "/project/#{username}/#{project}/settings"
     end
 
+    ##
+    #
+    # Put the project configuration
+    #
+    # @param username         [String] - User or org name who owns project
+    # @param project          [String] - Name of project
+    # @param settings_params  [Hash]   - Parameters hash of project
+    # @return                 [CircleCi::Response] - Response object
+
+    def self.put_settings username, project, settings_params = {}
+      CircleCi.http.put "/project/#{username}/#{project}/settings", {}, settings_params
+    end
+
   end
 
 end
